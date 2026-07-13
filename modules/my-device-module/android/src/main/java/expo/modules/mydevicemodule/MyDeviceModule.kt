@@ -17,7 +17,7 @@ class MyDeviceModule : Module() {
     }
 
     Function("hello") {
-      "Hello world! 👋"
+      "Hello world! 👋. Use native code"
     }
 
     AsyncFunction("setValueAsync") { value: String ->
