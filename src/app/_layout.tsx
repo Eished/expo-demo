@@ -1,4 +1,5 @@
 // app/_layout.tsx
+import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { AuthProvider, useAuth } from '@/context/AuthContext';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -11,38 +12,42 @@ function RootLayoutNav() {
   const { user, isLoading } = useAuth();
 
   return (
-    <Stack>
-      <Stack.Protected guard={user}>
-        <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        {/* 注册商品详情页 */}
-        <Stack.Screen
-          name='product/[id]'
-          options={{
-            // 可以在这里设置通用的头部样式，或者隐藏头部在页面内自定义
-            title: '商品详情',
-            headerBackTitle: '返回',
-          }}
-        />
-        <Stack.Screen
-          name='product/[id]/comments'
-          options={{
-            title: '商品评价',
-            headerBackTitle: '返回',
-          }}
-        />
-        <Stack.Screen
-          name='profile'
-          options={{
-            title: 'Profile',
-            headerBackTitle: '返回',
-          }}
-        />
-      </Stack.Protected>
+    <>
+      <AnimatedSplashOverlay />
 
-      <Stack.Protected guard={!user}>
-        <Stack.Screen name='login' options={{ title: '登录', headerShown: false }} />
-      </Stack.Protected>
-    </Stack>
+      <Stack>
+        <Stack.Protected guard={user}>
+          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+          {/* 注册商品详情页 */}
+          <Stack.Screen
+            name='product/[id]'
+            options={{
+              // 可以在这里设置通用的头部样式，或者隐藏头部在页面内自定义
+              title: '商品详情',
+              headerBackTitle: '返回',
+            }}
+          />
+          <Stack.Screen
+            name='product/[id]/comments'
+            options={{
+              title: '商品评价',
+              headerBackTitle: '返回',
+            }}
+          />
+          <Stack.Screen
+            name='profile'
+            options={{
+              title: 'Profile',
+              headerBackTitle: '返回',
+            }}
+          />
+        </Stack.Protected>
+
+        <Stack.Protected guard={!user}>
+          <Stack.Screen name='login' options={{ title: '登录', headerShown: false }} />
+        </Stack.Protected>
+      </Stack>
+    </>
   );
 }
 
