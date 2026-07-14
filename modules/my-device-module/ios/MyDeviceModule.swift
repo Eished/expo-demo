@@ -12,7 +12,7 @@ public class MyDeviceModule: Module {
     }
 
     Function("hello") {
-      return "Hello world! 👋"
+      return "Hello world! 👋. Use native code iOS"
     }
 
     AsyncFunction("setValueAsync") { (value: String) in

@@ -22,6 +22,11 @@ export default function AppTabs() {
         <NativeTabs.Trigger.Label>Explore</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon src={require('@/assets/images/tabIcons/explore.png')} renderingMode='template' />
       </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name='charts'>
+        <NativeTabs.Trigger.Label>Charts</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon src={require('@/assets/images/tabIcons/charts_pie.png')} renderingMode='template' />
+      </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
