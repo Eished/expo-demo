@@ -12,6 +12,7 @@ export default function AppTabs() {
       backgroundColor={colors.background}
       indicatorColor={colors.backgroundElement}
       labelStyle={{ selected: { color: colors.text } }}
+      labelVisibilityMode='labeled'
     >
       <NativeTabs.Trigger name='index'>
         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
@@ -23,9 +24,14 @@ export default function AppTabs() {
         <NativeTabs.Trigger.Icon src={require('@/assets/images/tabIcons/explore.png')} renderingMode='template' />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name='charts'>
-        <NativeTabs.Trigger.Label>Charts</NativeTabs.Trigger.Label>
+      <NativeTabs.Trigger name='chart'>
+        <NativeTabs.Trigger.Label>Chart</NativeTabs.Trigger.Label>
         <NativeTabs.Trigger.Icon src={require('@/assets/images/tabIcons/charts_pie.png')} renderingMode='template' />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name='account'>
+        <NativeTabs.Trigger.Label>Account</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon src={require('@/assets/images/tabIcons/account.png')} renderingMode='template' />
       </NativeTabs.Trigger>
     </NativeTabs>
   );
