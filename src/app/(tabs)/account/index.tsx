@@ -2,11 +2,14 @@ import ProductList from '@/components/product-list';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { useAuthStore } from '@/stores/auth/authStore';
 import { Link } from 'expo-router';
 import { Pressable, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Account() {
+  const logout = useAuthStore(state => state.clearAuth);
+
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -19,6 +22,15 @@ export default function Account() {
         <ThemedView>
           <TouchableOpacity>
             <Link href='/profile'>Profile</Link>
+          </TouchableOpacity>
+        </ThemedView>
+        <ThemedView>
+          <TouchableOpacity
+            onPress={() => {
+              logout();
+            }}
+          >
+            <ThemedText>Logout</ThemedText>
           </TouchableOpacity>
         </ThemedView>
         <ThemedView style={styles.products}>

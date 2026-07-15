@@ -9,19 +9,6 @@ import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 import MyDeviceModule from '@/modules/my-device-module/src/MyDeviceModule';
 
-interface IProduct {
-  id: string;
-  name: string;
-  price: string;
-}
-
-// 模拟商品数据
-const PRODUCTS: IProduct[] = [
-  { id: '101', name: '苹果 iPhone 15 Pro', price: '¥7999' },
-  { id: '102', name: '索尼 WH-1000XM5 耳机', price: '¥2499' },
-  { id: '103', name: '大疆 Mini 4 Pro 无人机', price: '¥4788' },
-];
-
 export default function HomeScreen() {
   return (
     <ThemedView style={styles.container}>

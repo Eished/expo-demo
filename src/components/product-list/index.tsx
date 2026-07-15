@@ -2,11 +2,11 @@
 import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-interface IProduct {
+type IProduct = {
   id: string;
   name: string;
   price: string;
-}
+};
 
 // 模拟商品数据
 const PRODUCTS: IProduct[] = [

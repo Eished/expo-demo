@@ -1,6 +1,7 @@
 // app/_layout.tsx
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import { AuthProvider, useAuth } from '@/context/AuthContext';
+import { selectUser } from '@/stores/auth/authSelector';
+import { useAuthStore } from '@/stores/auth/authStore';
 import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useColorScheme } from 'react-native';
@@ -9,14 +10,14 @@ SplashScreen.preventAutoHideAsync();
 // 抽取一个内部组件，因为我们需要使用 router 和 useAuth hooks
 // Hooks 必须在 Provider 内部使用
 function RootLayoutNav() {
-  const { user, isLoading } = useAuth();
+  const user = useAuthStore(selectUser);
 
   return (
     <>
       <AnimatedSplashOverlay />
 
       <Stack>
-        <Stack.Protected guard={user}>
+        <Stack.Protected guard={!!user}>
           <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
           {/* 注册商品详情页 */}
           <Stack.Screen
@@ -55,10 +56,8 @@ function RootLayoutNav() {
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   return (
-    <AuthProvider>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <RootLayoutNav />
-      </ThemeProvider>
-    </AuthProvider>
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <RootLayoutNav />
+    </ThemeProvider>
   );
 }

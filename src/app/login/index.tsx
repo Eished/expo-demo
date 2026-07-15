@@ -1,15 +1,21 @@
 // app/login.tsx
-import { useAuth } from '@/context/AuthContext';
+import { useAuthStore } from '@/stores/auth/authStore';
 import { Button, Text, View } from 'react-native';
 
 export default function LoginScreen() {
-  const { setUser } = useAuth();
+  const setAuth = useAuthStore(state => state.setAuth);
 
   const handleLogin = () => {
     // 模拟 API 登录成功
-    setUser({ name: '张三' });
-    // 注意：这里不需要手动写 router.replace('/')
-    // 状态更新后，RootLayout 里的 useEffect 会自动接管路由跳转！
+    setAuth(
+      {
+        name: '张三',
+        uid: 'uid123',
+        avatar: null,
+        email: 'a@mail.com',
+      },
+      'token123',
+    );
   };
 
   return (
